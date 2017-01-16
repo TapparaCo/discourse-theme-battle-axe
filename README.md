@@ -1,4 +1,4 @@
-# Discourse customizations for Tappara.co
+# Discourse theme and customizations for Tappara.co
 
 Copyright (c) 2017 Tappara.co. Released under the MIT license.
 
