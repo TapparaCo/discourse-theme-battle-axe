@@ -1,0 +1,19 @@
+div#upcloud-bottom img {
+    display: block;
+    margin: -4px auto 8px auto;
+    max-height: 50px;
+    max-width: 221px; 
+}
+
+div#upcloud-bottom a {
+    display: inline-block;
+}
+
+div#upcloud-bottom {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+div#upcloud-bottom-text {
+    margin-top: -6px;
+}
