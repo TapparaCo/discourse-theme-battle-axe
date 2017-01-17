@@ -10,13 +10,13 @@ box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
 
 #site-logo.logo-big {
     max-height: 50px;
-    max-width: 186px; 
+    max-width: 186px;
     margin-top: -5px;
 }
 
 #site-logo.logo-small {
     max-height: 50px;
-    max-width: 51px; 
+    max-width: 51px;
     margin-top: -5px;
 }
 
@@ -96,6 +96,12 @@ body.docked::before{
     display: none;
 }
 
+
+/*Remove extra space between before ad in categories view*/
+
+#list-area {
+    margin-bottom: 20px;
+}
 
 
 /*The so called Sanitized Mod*/
