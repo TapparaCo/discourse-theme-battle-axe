@@ -20,35 +20,74 @@
 <!-- The so called Sanitized Mod for Discourse UI -->
 
 <script type='text/x-handlebars' data-template-name='list/topic-list-item.raw'>
-    {{#if controller.bulkSelectEnabled}}
-    <td class='star'>
-        <input type="checkbox" class="bulk-select">
-    </td>
-    {{/if}}
-    <td class='main-link clearfix' colspan="{{titleColSpan}}">
-    {{raw "topic-status" topic=topic}}
-    {{topic-link topic}}
-    {{#if controller.showTopicPostBadges}}
-        {{raw "topic-post-badges" unread=topic.unread newPosts=topic.displayNewPosts unseen=topic.unseen url=topic.lastUnreadUrl}}
-    {{/if}}
-    {{plugin-outlet "topic-list-tags"}}
-    {{#if expandPinned}}
-        {{raw "list/topic-excerpt" topic=topic}}
-    {{/if}}
-    {{raw "list/action-list" topic=topic postNumbers=topic.liked_post_numbers className="likes" icon="heart"}}
-</td>
+	{{#if bulkSelectEnabled}}
+	  <td class='star'>
+		<input type="checkbox" class="bulk-select">
+	  </td>
+	{{/if}}
 
-{{#unless controller.hideCategory}}
-    {{#unless topic.isPinnedUncategorized}}
-        {{raw "list/category-column" category=topic.category}}
-    {{/unless}}
-{{/unless}}
+	<td class='main-link clearfix' colspan="{{titleColSpan}}">
+	  <span class='link-top-line'>
+		{{raw-plugin-outlet name="topic-list-before-status"}}
+		{{raw "topic-status" topic=topic}}
+		{{topic-link topic}}
+		{{#if topic.featured_link}}
+		  {{topic-featured-link topic}}
+		{{/if}}
+		{{raw-plugin-outlet name="topic-list-after-title"}}
+		{{#if showTopicPostBadges}}
+		  {{raw "topic-post-badges" unread=topic.unread newPosts=topic.displayNewPosts unseen=topic.unseen url=topic.lastUnreadUrl}}
+		{{/if}}
+	  </span>
 
-<td class="num views {{topic.viewsHeat}}">{{number topic.views numberKey="views_long"}}</td>
-{{raw "list/posts-count-column" topic=topic}}
+	  {{#if topic.tags}}
+		<div class='discourse-tags'>
+		{{#each topic.visibleListTags as |tag|}}
+		  {{discourse-tag tag}}
+		{{/each}}
+		</div>
+	  {{/if}}
+	  {{raw-plugin-outlet name="topic-list-tags"}}
+	  {{#if expandPinned}}
+		{{raw "list/topic-excerpt" topic=topic}}
+	  {{/if}}
+	  {{raw "list/action-list" topic=topic postNumbers=topic.liked_post_numbers className="likes" icon="heart"}}
+	</td>
 
-<td class="activity"
-title="{{topic.bumpedAtTitle}}">
+	{{#unless hideCategory}}
+	  {{#unless topic.isPinnedUncategorized}}
+		{{raw "list/category-column" category=topic.category}}
+	  {{/unless}}
+	{{/unless}}
+	
+	<td class="num views {{topic.viewsHeat}}">{{number topic.views numberKey="views_long"}}</td>
+	
+	{{raw "list/posts-count-column" topic=topic}}
+
+	{{#if showParticipants}}
+	  {{raw "list/posters-column" posters=topic.participants}}
+	{{/if}}
+
+	{{#if showLikes}}
+	<td class="num likes">
+	  {{#if hasLikes}}
+		<a href='{{topic.summaryUrl}}'>
+		  {{number topic.like_count}} <i class='fa fa-heart'></i></td>
+		</a>
+	  {{/if}}
+	{{/if}}
+
+	{{#if showOpLikes}}
+	<td class="num likes">
+	  {{#if hasOpLikes}}
+		<a href='{{topic.summaryUrl}}'>
+		  {{number topic.op_like_count}} <i class='fa fa-heart'></i></td>
+		</a>
+	  {{/if}}
+	{{/if}}
+
+
+	<td class="activity" title="{{topic.bumpedAtTitle}}">
     <a href="{{topic.lastPostUrl}}">
         {{avatar topic.lastPoster usernamePath="username" imageSize="medium"}}
             <span class='latest-info'>
@@ -59,18 +98,29 @@ title="{{topic.bumpedAtTitle}}">
             </span>
     </a>
 </td>
+
 </script>
 <script type='text/x-handlebars' data-template-name='topic-list-header.raw'>
-    {{#if bulkSelectEnabled}}
-    <th class='star'>
-        <button class='btn bulk-select' title='{{i18n "topics.bulk.toggle"}}'><i class='fa fa-list'></i></button>
-    </th>
-    {{/if}}
-    {{raw "topic-list-header-column" order='default' name='topic.title' showBulkToggle=toggleInTitle}}
-    {{#unless hideCategory}}
-        {{raw "topic-list-header-column" sortable=sortable order='category' name='category_title'}}
-    {{/unless}}
-    {{raw "topic-list-header-column" sortable=sortable number='true' order='views' name='views'}}
-    {{raw "topic-list-header-column" sortable=sortable number='true' order='posts' name='replies'}}
+	{{#if bulkSelectEnabled}}
+	  <th class='star'>
+		<button class='btn bulk-select' title='{{i18n "topics.bulk.toggle"}}'><i class='fa fa-list'></i></button>
+	  </th>
+	{{/if}}
+	{{raw "topic-list-header-column" order='default' name='topic.title' bulkSelectEnabled=bulkSelectEnabled showBulkToggle=toggleInTitle}}
+	{{#unless hideCategory}}
+	  {{raw "topic-list-header-column" sortable=sortable order='category' name='category_title'}}
+	{{/unless}}
+	{{raw "topic-list-header-column" sortable=sortable number='true' order='views' name='views'}}
+	{{raw "topic-list-header-column" sortable=sortable number='true' order='posts' name='replies'}}
+	{{#if showParticipants}}
+	  {{raw "topic-list-header-column" order='participants' name='users'}}
+	{{/if}}
+	{{#if showLikes}}
+	  {{raw "topic-list-header-column" sortable=sortable number='true' order='likes' name='likes'}}
+	{{/if}}
+	{{#if showOpLikes}}
+	  {{raw "topic-list-header-column" sortable=sortable number='true' order='op_likes' name='likes'}}
+	{{/if}}
     {{raw "topic-list-header-column" sortable=sortable number='true' order='activity' name='admin.dashboard.latest_version'}}
+
 </script>
