@@ -67,3 +67,19 @@ box-shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
 #list-area {
     margin-bottom: 20px;
 }
+
+/*Last Visir separator re-coloring*/
+
+.topic-list .topic-list-item-separator td {
+    border-bottom: 1px solid #ff6600;
+    line-height: 0.1em;
+    padding: 0px;
+    text-align: center;
+}
+
+.topic-list .topic-list-item-separator td span {
+    background-color: #FDFBF9;
+    color: #ff6600;
+    padding: 0px 8px;
+    font-size: 0.929em;
+}
