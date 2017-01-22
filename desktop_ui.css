@@ -72,10 +72,12 @@ body.docked::before{
 /*Adjust color for unread topics in Categories view*/
 
 
-.topic-list.categories a.title {
+.category-list.with-topics a.title {
     color: #000;
 }
-
+.category-list.with-topics a.title.visited {
+    color: #737373;
+}
 
 /*Reduced AdSense padding, hide ADVERTISEMENT-labels*/
 
