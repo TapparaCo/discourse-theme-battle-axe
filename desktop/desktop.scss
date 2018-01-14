@@ -46,6 +46,12 @@ body:before {
 .presence-users {
   background-color: #fdfbf9;
 }
+  
+// Natural white for message editor backgroud area
+#reply-control {
+    background-color: #fdfbf9;
+}
+
 // User profile messages list
 .user-stream .item, .user-stream .user-stream-item {
   background-color: #fdfbf9;
