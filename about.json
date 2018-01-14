@@ -1,7 +1,7 @@
 {
   "name": "Battle Axe 1.0",
-  "about_url": "https://github.com/osmoossi/discourse-theme-Battle-Axe",
-  "license_url": "https://github.com/osmoossi/discourse-theme-Battle-Axe/blob/master/LICENSE.md",
+  "about_url": "https://github.com/TapparaCo/discourse-theme-battle-axe",
+  "license_url": "https://github.com/TapparaCo/discourse-theme-battle-axe/blob/master/LICENSE.md",
   "color_schemes": {
     "Battle Axe Blue Top": {
       "primary": "000000",
