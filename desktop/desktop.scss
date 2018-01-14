@@ -46,7 +46,7 @@ body:before {
 .presence-users {
   background-color: #fdfbf9;
 }
-  
+
 // Natural white for message editor background area
 #reply-control {
     background-color: #fdfbf9;
@@ -142,4 +142,14 @@ body.docked::before {
   color: #ff6600;
   padding: 0px 8px;
   font-size: 0.929em;
+}
+
+/* Fix for Discourse bug.
+   Progress indicator positioning gets off with footer. */
+.posts-wrapper {
+  margin-bottom: 16px;
+}
+
+#topic-progress-wrapper.docked {
+  margin-bottom: -20px;
 }
