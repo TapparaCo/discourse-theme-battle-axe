@@ -1,0 +1,74 @@
+// Header modification with stripe and shadow
+.d-header {
+  border-top: 6px solid #ff6600;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+// Header logos to pure white
+.d-header-icons .d-icon {
+  opacity: 1;
+}
+
+// Enlarge logo sizes
+#site-logo.logo-big {
+  max-height: 40px;
+  max-width: 44px;
+}
+
+.ember-view.title {
+  height: 40px
+}
+
+.d-header .contents {
+  margin: 6px 0px;
+}
+
+.d-header .title {
+  max-width: 149px;
+}
+
+// Remove ADVERTISEMENT-labeld for DFP, AdSense
+.google-adsense-label {
+  display: none;
+}
+
+.google-dfp-ad-label {
+  display: none;
+}
+
+// Supress topic excerpts for mobile Categories view
+.topic-list {
+  .topic-excerpt {
+    display: none;
+  }
+}
+
+// Hide the dangerous Mailing list mode -setting
+.user-preferences .pref-mailing-list-mode {
+  display: none;
+}
+
+// Horizontal spacer for posts
+.topic-post article {
+  border-top: 1px solid #e9e9e9;
+}
+
+// Remove extra space between before ad in categories view
+#list-area {
+  margin-bottom: 20px;
+}
+
+// Last Visit separator re-coloring
+.topic-list .topic-list-item-separator td {
+  border-bottom: 1px solid #ff6600;
+  line-height: 0.1em;
+  padding: 0px;
+  text-align: center;
+}
+
+.topic-list .topic-list-item-separator td span {
+  background-color: #FDFBF9;
+  color: #ff6600;
+  padding: 0px 8px;
+  font-size: 0.929em;
+}

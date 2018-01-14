@@ -1,24 +1,4 @@
-<!-- Categery view, unread topics re-styling -->
-
-<script type='text/x-handlebars' data-template-name='components/featured-topic'>
-{{topic-status topic=topic}}
-{{topic-link topic}}
-{{topic-post-badges newPosts=topic.totalUnread unseen=topic.unseen url=topic.lastUnreadUrl}}
-
-{{#if latestTopicOnly}}
-  <div class='last-user-info'>
-    {{i18n 'categories.latest_by'}} <a href="{{{unbound topic.lastPosterUrl}}}">{{unbound topic.last_poster.username}}</a>
-    <a href="{{unbound topic.lastPostUrl}}">{{format-age topic.last_posted_at}}</a>
-  </div>
-{{else}}
-  &nbsp;
-  <a href class="last-posted-at">{{format-age topic.last_posted_at}}</a>
-{{/if}}
-</script>
-
-
-<!-- The so called Sanitized Mod for Discourse UI -->
-
+<!-- So called "Sanitized Mod", combine "Activity" and "Users" columns to one "Latest post" column -->
 <script type='text/x-handlebars' data-template-name='list/topic-list-item.raw'>
 	{{#if bulkSelectEnabled}}
 	  <td class='star'>
@@ -86,20 +66,21 @@
 	  {{/if}}
 	{{/if}}
 
-
 	<td class="activity" title="{{topic.bumpedAtTitle}}">
     <a href="{{topic.lastPostUrl}}">
-        {{avatar topic.lastPoster usernamePath="username" imageSize="medium"}}
-            <span class='latest-info'>
-                <span class='name'>
-                    {{topic.last_poster_username}}
-                </span>
-                {{format-date topic.bumpedAt format="medium"}}
-            </span>
+      {{avatar topic.lastPoster usernamePath="username" imageSize="medium"}}
+        <span class='latest-info'>
+          <span class='name'>
+            {{topic.last_poster_username}}
+          </span>
+          {{format-date topic.bumpedAt format="medium"}}
+        </span>
     </a>
 </td>
 
 </script>
+
+<!-- Same for header row. -->
 <script type='text/x-handlebars' data-template-name='topic-list-header.raw'>
 	{{#if bulkSelectEnabled}}
 	  <th class='star'>
