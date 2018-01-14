@@ -56,15 +56,6 @@ body.docked::before {
   border-left: 13px solid;
 }
 
-// Adjust color for unread topics in Categories view
-.category-list.with-topics a.title {
-  color: #000;
-}
-
-.category-list.with-topics a.title.visited {
-  color: #737373;
-}
-
 // Reduced AdSense padding, hide ADVERTISEMENT-labels
 .adsense {
   text-align: center;
@@ -141,14 +132,4 @@ body.docked::before {
   color: #ff6600;
   padding: 0px 8px;
   font-size: 0.929em;
-}
-
-/* Fix for Discourse bug.
-   Progress indicator positioning gets off with footer. */
-.posts-wrapper {
-  margin-bottom: 16px;
-}
-
-#topic-progress-wrapper.docked {
-  margin-bottom: -20px;
 }
