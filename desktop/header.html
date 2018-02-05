@@ -82,12 +82,14 @@
 
 <!-- Same for header row. -->
 <script type='text/x-handlebars' data-template-name='topic-list-header.raw'>
-	{{#if bulkSelectEnabled}}
-	  <th class='star'>
-		<button class='btn bulk-select' title='{{i18n "topics.bulk.toggle"}}'><i class='fa fa-list'></i></button>
-	  </th>
-	{{/if}}
-	{{raw "topic-list-header-column" order='default' name='topic.title' bulkSelectEnabled=bulkSelectEnabled showBulkToggle=toggleInTitle}}
+  {{#if bulkSelectEnabled}}
+    <th class='star'>
+      {{#if canBulkSelect}}
+        {{raw "flat-button" class="bulk-select" icon="list" title="topics.bulk.toggle"}}
+      {{/if}}
+    </th>
+  {{/if}}
+  {{raw "topic-list-header-column" order='default' name='topic.title' bulkSelectEnabled=bulkSelectEnabled showBulkToggle=toggleInTitle canBulkSelect=canBulkSelect}}
 	{{#unless hideCategory}}
 	  {{raw "topic-list-header-column" sortable=sortable order='category' name='category_title'}}
 	{{/unless}}
@@ -102,6 +104,6 @@
 	{{#if showOpLikes}}
 	  {{raw "topic-list-header-column" sortable=sortable number='true' order='op_likes' name='likes'}}
 	{{/if}}
-    {{raw "topic-list-header-column" sortable=sortable number='true' order='activity' name='search.latest_post'}}
+  {{raw "topic-list-header-column" sortable=sortable number='true' order='activity' name='search.latest_post'}}
 
 </script>
